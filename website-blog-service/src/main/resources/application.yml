@@ -1,0 +1,46 @@
+server:
+  port: 8700
+  servlet:
+    session.persistent: false
+
+spring:
+  application:
+    name: blog-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql-server:3306/devdb?character=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    platform: mysql
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties.hibernate.format_sql: true
+  redis:
+    host: redis-server
+    port: 6379
+    timeout: 3s
+    repositories.enable: false
+    database: 3
+  data.elasticsearch:
+    cluster-nodes: es-server:9300
+    cluster-name: docker-cluster
+    properties:
+      transport.tcp.connect_timeout: 120s
+      client.name: null
+  # 避免health check 问题
+  elasticsearch:
+    rest:
+      uris: ["http://192.168.137.150:9200"]
+
+website:
+  app:
+    id: 7
+    password: h3dxgb21ts
+
+logging:
+  level:
+    root: info
+    org.apache.coyote.http11.Http11InputBuffer: debug
