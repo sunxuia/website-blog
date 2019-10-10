@@ -33,7 +33,7 @@ spring:
   # 避免health check 问题
   elasticsearch:
     rest:
-      uris: ["http://192.168.137.150:9200"]
+      uris: ["http://es-server:9200"]
 
 website:
   app:
